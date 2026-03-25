@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Biro Health — Your Belief System Is the Ceiling</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy:#0D1B2A; --navy2:#12243A; --navy3:#0A1520;
+    --gold:#C9A84C; --gold-light:#E8CFA0; --gold-dim:#8B6E2F;
+    --cream:#F8F5EF; --warm:#F0EAD6; --text-dark:#1A2530; --mid:#5A6A78;
+  }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{background:var(--navy);color:var(--cream);font-family:'Montserrat',sans-serif;font-weight:300;overflow-x:hidden}
+  .gold-top{position:fixed;top:0;left:0;right:0;height:2px;background:var(--gold);z-index:100}
+
+/* NAV */
+nav{position:fixed;top:2px;left:0;right:0;z-index:99;padding:18px 48px;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(to bottom,rgba(13,27,42,.98),rgba(13,27,42,0))}
+.nav-logo{font-family:‘Montserrat’,sans-serif;font-weight:700;font-size:14px;letter-spacing:4px;color:var(–gold);text-decoration:none}
+.nav-cta{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(–navy);background:var(–gold);padding:10px 22px;text-decoration:none;font-weight:700;transition:background .2s}
+.nav-cta:hover{background:var(–gold-light)}
+
+/* HERO */
+#hero{position:relative;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;padding:130px 24px 60px;background:linear-gradient(170deg,#0D1B2A 0%,#0A1520 60%,#091420 100%);overflow:hidden}
+#hero::before{content:’’;position:absolute;top:20%;left:50%;transform:translate(-50%,-50%);width:700px;height:700px;background:radial-gradient(ellipse,rgba(201,168,76,.07) 0%,transparent 68%);pointer-events:none}
+
+.hero-pre{font-size:10px;letter-spacing:5px;color:var(–gold);text-transform:uppercase;margin-bottom:20px;opacity:0;animation:fadeUp .8s ease forwards .2s}
+.hero-title{font-family:‘Cormorant Garamond’,serif;font-weight:300;font-size:clamp(46px,7vw,84px);line-height:1.05;color:var(–cream);margin-bottom:10px;opacity:0;animation:fadeUp .9s ease forwards .35s}
+.hero-title em{color:var(–gold);font-style:italic}
+.hero-divider{width:56px;height:1px;background:var(–gold);margin:24px auto;opacity:0;animation:fadeUp .7s ease forwards .55s}
+.hero-sub{font-family:‘Cormorant Garamond’,serif;font-size:clamp(16px,2.2vw,22px);font-weight:400;color:var(–gold-light);letter-spacing:.5px;margin-bottom:8px;opacity:0;animation:fadeUp .8s ease forwards .65s}
+.hero-tag{font-size:13px;font-weight:400;color:#90A4AE;font-style:italic;margin-bottom:40px;max-width:560px;line-height:1.6;opacity:0;animation:fadeUp .8s ease forwards .8s}
+
+/* PYRAMID */
+.hero-pyramid{width:100%;max-width:580px;margin:0 auto 44px;opacity:0;animation:fadeUp .9s ease forwards .9s}
+.pyr-row{display:flex;align-items:center;justify-content:center;margin:0 auto 3px}
+.pyr-inner{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:11px 16px;width:100%;transition:filter .25s;cursor:default}
+.pyr-row:hover .pyr-inner{filter:brightness(1.12)}
+.pyr-lbl{font-family:‘Montserrat’,sans-serif;font-weight:700;font-size:9px;letter-spacing:2px;text-transform:uppercase;margin-bottom:2px}
+.pyr-dsc{font-size:9px;font-style:italic;opacity:.8;line-height:1.35}
+
+.r-soul  {width:100%} .r-soul   .pyr-inner{background:#0D1B2A;border:1px solid var(–gold);clip-path:polygon(3% 0%,97% 0%,100% 100%,0% 100%);color:var(–gold);padding:16px 40px}
+.r-belief{width:82%}  .r-belief  .pyr-inner{background:#1A3A5C;clip-path:polygon(4% 0%,96% 0%,100% 100%,0% 100%);color:var(–gold-light);padding:13px 24px}
+.r-emot  {width:64%}  .r-emot    .pyr-inner{background:#1E5073;clip-path:polygon(5% 0%,95% 0%,100% 100%,0% 100%);color:#fff;padding:12px 20px}
+.r-behav {width:46%}  .r-behav   .pyr-inner{background:var(–gold);clip-path:polygon(6% 0%,94% 0%,100% 100%,0% 100%);color:var(–navy);padding:11px 16px}
+.r-outco {width:28%}  .r-outco   .pyr-inner{background:var(–gold-light);clip-path:polygon(8% 0%,92% 0%,100% 100%,0% 100%);color:var(–navy);padding:10px 10px}
+
+.pyr-hint{font-family:‘Cormorant Garamond’,serif;font-size:14px;color:var(–gold-light);font-style:italic;margin-top:14px}
+
+/* FORM */
+.form-wrap{width:100%;max-width:520px;opacity:0;animation:fadeUp .9s ease forwards 1.1s}
+.form-lbl{font-size:10px;letter-spacing:3px;color:var(–gold);text-transform:uppercase;margin-bottom:12px;display:block;font-weight:600}
+.form-row{display:flex;border:1px solid var(–gold-dim);background:rgba(18,36,58,.7);backdrop-filter:blur(8px);transition:border-color .3s,box-shadow .3s}
+.form-row:focus-within{border-color:var(–gold);box-shadow:0 0 0 1px var(–gold),0 0 28px rgba(201,168,76,.12)}
+.form-row input{flex:1;background:transparent;border:none;outline:none;padding:16px 20px;color:var(–cream);font-family:‘Montserrat’,sans-serif;font-size:13px;font-weight:400}
+.form-row input::placeholder{color:#5A6A78}
+.form-row button{background:var(–gold);border:none;padding:16px 26px;color:var(–navy);font-family:‘Montserrat’,sans-serif;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:background .2s,transform .15s;white-space:nowrap}
+.form-row button:hover{background:var(–gold-light)}
+.form-row button:active{transform:scale(.98)}
+.form-note{font-size:10px;color:#5A6A78;margin-top:10px;font-weight:400}
+.form-success{display:none;padding:18px;border:1px solid var(–gold);background:rgba(201,168,76,.08);text-align:center;font-family:‘Cormorant Garamond’,serif;font-size:18px;color:var(–gold-light);font-style:italic}
+
+/* SECTIONS */
+section{position:relative;z-index:1}
+.inner{max-width:1060px;margin:0 auto;padding:0 24px}
+.s-lbl{font-size:9px;letter-spacing:4px;color:var(–gold);text-transform:uppercase;margin-bottom:12px;font-weight:600}
+.s-title{font-family:‘Cormorant Garamond’,serif;font-size:clamp(30px,4.5vw,50px);font-weight:300;color:var(–cream);line-height:1.15;margin-bottom:18px}
+.s-title em{color:var(–gold);font-style:italic}
+.g-rule{width:44px;height:1px;background:var(–gold);margin-bottom:32px}
+.s-body{font-size:13px;color:#5A6A78;max-width:600px;line-height:1.8;font-weight:400;margin-bottom:0}
+
+/* GUIDE GRID */
+#guide-preview{padding:90px 0;background:linear-gradient(to bottom,#091420,var(–navy2))}
+.guide-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:2px;margin-top:40px}
+.guide-item{padding:28px 26px;background:var(–navy3);border-top:2px solid transparent;transition:border-color .3s,background .3s}
+.guide-item:hover{border-color:var(–gold);background:rgba(201,168,76,.04)}
+.g-step{font-size:9px;letter-spacing:2.5px;color:var(–gold);text-transform:uppercase;margin-bottom:8px;font-weight:600}
+.g-title{font-family:‘Cormorant Garamond’,serif;font-size:21px;font-weight:400;color:var(–cream);margin-bottom:8px}
+.g-text{font-size:12px;color:#5A6A78;line-height:1.7;font-weight:300}
+
+/* QUOTE */
+#q-sec{padding:90px 0;text-align:center;background:var(–navy)}
+.big-q{font-family:‘Cormorant Garamond’,serif;font-size:clamp(20px,3.5vw,38px);font-weight:300;color:var(–cream);line-height:1.45;max-width:760px;margin:0 auto 20px;font-style:italic}
+.big-q span{color:var(–gold)}
+.q-attr{font-size:10px;letter-spacing:3px;color:var(–gold);text-transform:uppercase}
+
+/* FOR WHO */
+#for-who{padding:90px 0;background:var(–navy2)}
+.for-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;margin-top:40px}
+.for-card{padding:30px 24px;background:var(–navy3);border-bottom:2px solid transparent;transition:border-color .3s}
+.for-card:hover{border-color:var(–gold)}
+.f-icon{font-size:9px;letter-spacing:2px;color:var(–gold);text-transform:uppercase;margin-bottom:10px;font-weight:600}
+.f-title{font-family:‘Cormorant Garamond’,serif;font-size:20px;color:var(–cream);margin-bottom:8px}
+.f-text{font-size:11.5px;color:#5A6A78;line-height:1.7;font-weight:300}
+
+/* CAPTURE 2 */
+#cap2{padding:90px 0;text-align:center;background:linear-gradient(to bottom,var(–navy2),var(–navy3))}
+.cap-box{max-width:560px;margin:0 auto;padding:52px 44px;border:1px solid var(–gold-dim);background:rgba(18,36,58,.6);backdrop-filter:blur(10px);position:relative}
+.cap-box::before,.cap-box::after{content:’’;position:absolute;left:0;right:0;height:2px;background:var(–gold)}
+.cap-box::before{top:0} .cap-box::after{bottom:0}
+.cap-title{font-family:‘Cormorant Garamond’,serif;font-size:clamp(26px,4vw,38px);font-weight:300;color:var(–cream);margin-bottom:10px;line-height:1.2}
+.cap-sub{font-size:12px;color:#5A6A78;margin-bottom:28px;line-height:1.7;font-weight:400}
+.w-list{text-align:left;margin-bottom:28px;border-top:1px solid rgba(201,168,76,.15);border-bottom:1px solid rgba(201,168,76,.15);padding:14px 0}
+.w-list li{font-size:11px;color:var(–gold-light);padding:5px 0;list-style:none;display:flex;gap:10px;font-weight:400}
+.w-list li::before{content:‘◆’;color:var(–gold);font-size:7px;flex-shrink:0;margin-top:3px}
+
+/* FOOTER */
+footer{background:var(–navy3);border-top:1px solid rgba(201,168,76,.15);padding:36px 24px;text-align:center}
+.f-logo{font-family:‘Montserrat’,sans-serif;font-weight:700;font-size:13px;letter-spacing:4px;color:var(–gold);margin-bottom:6px}
+.f-tag{font-size:10px;color:#5A6A78;letter-spacing:2px;margin-bottom:18px}
+.f-links{display:flex;justify-content:center;gap:28px;margin-bottom:16px;flex-wrap:wrap}
+.f-links a{font-size:10px;letter-spacing:2px;color:var(–gold-dim);text-decoration:none;text-transform:uppercase;transition:color .2s}
+.f-links a:hover{color:var(–gold)}
+.f-copy{font-size:10px;color:rgba(90,106,120,.4)}
+
+/* REVEAL */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:translateY(0)}}
+
+@media(max-width:768px){
+nav{padding:14px 18px}
+.guide-grid,.for-grid{grid-template-columns:1fr}
+.form-row{flex-direction:column}
+.form-row button{width:100%}
+.cap-box{padding:32px 20px}
+.r-soul,.r-belief,.r-emot,.r-behav,.r-outco{width:100%}
+}
+</style>
+
+</head>
+<body>
+<div class="gold-top"></div>
+
+<nav>
+  <a class="nav-logo" href="#">BIRO HEALTH</a>
+  <a class="nav-cta" href="#cap2">Get the Free Guide</a>
+</nav>
+
+<!-- HERO -->
+
+<section id="hero">
+  <p class="hero-pre">Performance Optimizer · Mind · Body · Spirit</p>
+  <h1 class="hero-title">Your belief system is<br><em>the ceiling.</em></h1>
+  <div class="hero-divider"></div>
+  <p class="hero-sub">Not your strategy. Not your market. Not your circumstances.</p>
+  <p class="hero-tag">Every limitation you experience is a belief running on autopilot — below your awareness, shaping every decision, every relationship, every result.</p>
+
+  <div class="hero-pyramid">
+    <div class="pyr-row r-outco">
+      <div class="pyr-inner"><span class="pyr-lbl">Outcome</span><span class="pyr-dsc">Your results, income, relationships, health</span></div>
+    </div>
+    <div class="pyr-row r-behav">
+      <div class="pyr-inner"><span class="pyr-lbl">Behavior</span><span class="pyr-dsc">Bold action — or avoidance &amp; procrastination</span></div>
+    </div>
+    <div class="pyr-row r-emot">
+      <div class="pyr-inner"><span class="pyr-lbl">Emotion</span><span class="pyr-dsc">Fear, anxiety, limitation — or expansion &amp; clarity</span></div>
+    </div>
+    <div class="pyr-row r-belief">
+      <div class="pyr-inner"><span class="pyr-lbl">Belief</span><span class="pyr-dsc">The subconscious filter built by experience</span></div>
+    </div>
+    <div class="pyr-row r-soul">
+      <div class="pyr-inner"><span class="pyr-lbl">True Authentic Self · The Soul</span><span class="pyr-dsc">Pure consciousness. Unconditional love. Your unlimited natural state — before any conditioning.</span></div>
+    </div>
+    <p class="pyr-hint">Change the base — and every layer above it transforms.</p>
+  </div>
+
+  <div class="form-wrap">
+    <label class="form-lbl">Get the free guide — understand your root mechanism</label>
+    <div class="form-row" id="hero-row">
+      <input type="email" id="hero-email" placeholder="your@email.com" autocomplete="email">
+      <button onclick="submit('hero-email','hero-row','hero-ok')">Get Free Guide</button>
+    </div>
+    <div class="form-success" id="hero-ok">✦ &nbsp; Check your inbox — your guide is on its way.</div>
+    <p class="form-note">Free. No spam. Weekly insights on mind, body &amp; spirit. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- GUIDE PREVIEW -->
+
+<section id="guide-preview">
+  <div class="inner">
+    <p class="s-lbl reveal">The Free Guide</p>
+    <h2 class="s-title reveal">The Root Mechanism —<br><em>explained in full</em></h2>
+    <div class="g-rule reveal"></div>
+    <p class="s-body reveal">The guide walks you through the complete five-step process — from outcome back to soul, and from soul forward to a new outcome. Free. No fluff.</p>
+    <div class="guide-grid">
+      <div class="guide-item reveal">
+        <div class="g-step">Step 1</div>
+        <h3 class="g-title">Examine the Outcome</h3>
+        <p class="g-text">We begin with what is already visible — the result that keeps repeating, no matter what you try to change externally.</p>
+      </div>
+      <div class="guide-item reveal">
+        <div class="g-step">Step 2</div>
+        <h3 class="g-title">Identify the Behavior</h3>
+        <p class="g-text">Behind every repeated outcome is a repeated behavior — operating like a program in the background, often invisible to you.</p>
+      </div>
+      <div class="guide-item reveal">
+        <div class="g-step">Step 3</div>
+        <h3 class="g-title">Trace the Emotion</h3>
+        <p class="g-text">Every behavior is driven by an emotion — fear, unworthiness, anxiety. These are not weaknesses. They are signals pointing to the root.</p>
+      </div>
+      <div class="guide-item reveal">
+        <div class="g-step">Step 4</div>
+        <h3 class="g-title">Find the Belief</h3>
+        <p class="g-text">The emotion reveals the belief — the subconscious story running about who you are and what's possible for you.</p>
+      </div>
+      <div class="guide-item reveal">
+        <div class="g-step">Step 5</div>
+        <h3 class="g-title">Return to the True Self</h3>
+        <p class="g-text">Beneath every false belief is your authentic self — pure, whole, unlimited. We reconnect to that. And from there, we rebuild everything above it.</p>
+      </div>
+      <div class="guide-item reveal" style="border-top:2px solid var(--gold);background:rgba(201,168,76,.04)">
+        <div class="g-step">The Rebuild</div>
+        <h3 class="g-title">A New Chain Forms</h3>
+        <p class="g-text" style="color:var(--gold-light)">New belief → new emotion → new behavior → new outcome. Permanently. Not through willpower — through root-level change.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+
+<section id="q-sec">
+  <div class="inner">
+    <p class="big-q reveal">
+      "Most people change the outcome, the behavior, even the emotion.<br>
+      Nobody changes the belief. That is why nothing lasts.<br>
+      <span>This is where performance is reborn.</span>"
+    </p>
+    <p class="q-attr reveal">— Biro Marius</p>
+  </div>
+</section>
+
+<!-- WHO THIS IS FOR -->
+
+<section id="for-who">
+  <div class="inner">
+    <p class="s-lbl reveal">This Is For You If</p>
+    <h2 class="s-title reveal">You know something is<br><em>holding you back.</em></h2>
+    <div class="g-rule reveal"></div>
+    <div class="for-grid">
+      <div class="for-card reveal">
+        <div class="f-icon">◆ Business</div>
+        <h3 class="f-title">You've hit a ceiling</h3>
+        <p class="f-text">You work harder than anyone. But the results have plateaued — and you can't see why. The ceiling isn't external.</p>
+      </div>
+      <div class="for-card reveal">
+        <div class="f-icon">◆ Health</div>
+        <h3 class="f-title">Your body is speaking</h3>
+        <p class="f-text">Fatigue. Brain fog. Chronic stress. Your body is carrying something your mind has been ignoring for years.</p>
+      </div>
+      <div class="for-card reveal">
+        <div class="f-icon">◆ Relationships</div>
+        <h3 class="f-title">Patterns that repeat</h3>
+        <p class="f-text">The same dynamics keep showing up — different people, same story. That is not coincidence. That is a filter on autopilot.</p>
+      </div>
+      <div class="for-card reveal">
+        <div class="f-icon">◆ Purpose</div>
+        <h3 class="f-title">Success without fulfilment</h3>
+        <p class="f-text">You have achieved what you set out to achieve — and yet something is missing. Purpose is not found. It is uncovered.</p>
+      </div>
+      <div class="for-card reveal">
+        <div class="f-icon">◆ Performance</div>
+        <h3 class="f-title">Operating below capacity</h3>
+        <p class="f-text">You sense there is a sharper, calmer, bolder version of you. You are right. It exists — waiting beneath the filter.</p>
+      </div>
+      <div class="for-card reveal">
+        <div class="f-icon">◆ Change</div>
+        <h3 class="f-title">Ready to go to the root</h3>
+        <p class="f-text">You have tried the strategies, the habits, the mindset work. You are ready for something that changes the operating system — permanently.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CAPTURE 2 -->
+
+<section id="cap2">
+  <div class="cap-box reveal">
+    <p class="s-lbl">Free Guide — Instant Access</p>
+    <h2 class="cap-title">The Root Mechanism.<br>Yours — now.</h2>
+    <p class="cap-sub">Enter your email and receive the complete guide on the five-step process, plus weekly insights on mind, body, and spirit performance.</p>
+    <ul class="w-list">
+      <li>The complete 5-step Root Mechanism — clearly explained</li>
+      <li>How to trace any outcome back to its belief</li>
+      <li>The rebuild process — from soul to new outcome</li>
+      <li>Weekly insights: one idea per week, no noise</li>
+      <li>Early access to courses, retreats, and private offers</li>
+    </ul>
+    <label class="form-lbl">Your email address</label>
+    <div class="form-row" id="cap2-row">
+      <input type="email" id="cap2-email" placeholder="your@email.com" autocomplete="email">
+      <button onclick="submit('cap2-email','cap2-row','cap2-ok')">Send Me the Guide</button>
+    </div>
+    <div class="form-success" id="cap2-ok">✦ &nbsp; You're in. Your guide is on its way.</div>
+    <p class="form-note" style="margin-top:12px;font-weight:400">Biro Marius · @BiroHealth · +40 747 318 314</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+  <div class="f-logo">BIRO HEALTH</div>
+  <div class="f-tag">Mind · Body · Spirit — Aligned at the Root</div>
+  <div class="f-links">
+    <a href="https://instagram.com/BiroHealth" target="_blank">Instagram</a>
+    <a href="https://wa.me/40747318314" target="_blank">WhatsApp</a>
+    <a href="#hero">Get the Guide</a>
+    <a href="#cap2">Join the List</a>
+  </div>
+  <div class="f-copy">© 2025 Biro Health · Biro Marius · All rights reserved</div>
+</footer>
+
+<script>
+  function submit(inputId, rowId, successId) {
+    const email = document.getElementById(inputId).value.trim();
+    if (!email || !email.includes('@')) { document.getElementById(inputId).focus(); return; }
+    document.getElementById(rowId).style.display = 'none';
+    document.getElementById(successId).style.display = 'block';
+    console.log('Email captured:', email);
+    // Connect to ConvertKit / Mailchimp here
+  }
+  document.querySelectorAll('input[type="email"]').forEach(inp => {
+    inp.addEventListener('keydown', e => { if(e.key==='Enter') inp.nextElementSibling?.click(); });
+  });
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, {threshold:.1});
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+</script>
+
+</body>
+</html>
